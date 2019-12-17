@@ -1,12 +1,13 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
-const Recipe = () => {
+const Recipe = ({title, calories, image}) => {
     return (
-        <div>
-            <h1>Title</h1>
-            <p>Description</p>
-            <img src="" alt=""/>
+        <div className="">
+            <h1>{title}</h1>
+            <p>{calories}</p>
+            <img src={image} alt=""/>
         </div>
     );
 };
