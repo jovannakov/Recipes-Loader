@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from "./Recipe";
 import './App.css';
 
 
@@ -7,9 +8,9 @@ const App = () => {
     const API_ID = "91d484c9";
     const API_KEY = "7abf94308cf8b2a63f409bb8888859ae";
 
-    let [counter, setCounter] = useState(0);
+    const [recipes, setRecipes] = useState([]);
 
-    useEffect(() => {
+      useEffect(() => {
        console.log("Effect has been run");
        getRecipies();
     },[]);
@@ -17,7 +18,8 @@ const App = () => {
     const getRecipies = async () => {
         const response = await fetch(exampleRequest);
         const data = await response.json();
-        console.log(data);
+        setRecipes(data.hits);
+        console.log(recipes);
     };
 
 
@@ -31,7 +33,7 @@ const App = () => {
               <input type="text" className="search-bar"/>
               <button type="submit" className="search-button">Submit</button>
           </form>
-          <h1 onClick={() => {return setCounter(counter + 1);}}>{counter}</h1>
+
       </div>
   );
 };
