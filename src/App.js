@@ -29,13 +29,12 @@ const App = () => {
 
     const onChangeSearch = event => {
       setSearch(event.target.value);
-        console.log(event.target.value);
     };
 
     const updateQuery = e => {
         e.preventDefault();
         setQuery(search);
-        console.log("Updating query");
+        setSearch('');
     };
 
   return (
@@ -48,13 +47,18 @@ const App = () => {
           </form>
 
 
-          {recipes.map(recipe => (
-                <Recipe
-                    key={recipe.recipe.label}
-                    title={recipe.recipe.label}
-                    calories={recipe.recipe.calories}
-                    image={recipe.recipe.image}/>
+          <div className="recipes">
+
+              {recipes.map(recipe => (
+                  <Recipe
+                      key={recipe.recipe.label}
+                      title={recipe.recipe.label}
+                      calories={recipe.recipe.calories}
+                      image={recipe.recipe.image}
+                      ingredients={recipe.recipe.ingredients}/>
               ))}
+
+          </div>
       </div>
   );
 };
